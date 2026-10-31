@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A Kamera timelapse személyes Home Assistant-alkalmazás adatkezelési tájékoztatója: Google Drive-hozzáférés, képek, tokenek, megőrzés és törlés.">
+  <title>Adatvédelmi tájékoztató — Kamera timelapse</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Ugrás a tartalomra</a>
+  <header class="shell"><a class="brand" href="./">Kamera timelapse<span>személyes Home Assistant-projekt</span></a><nav aria-label="Főmenü"><a href="./">Kezdőlap</a><a href="https://github.com/M3NT1/m3nt1.github.io">GitHub ↗</a></nav></header>
+  <main id="main" class="shell policy">
+    <p class="eyebrow">Adatkezelés</p>
+    <h1>Adatvédelmi tájékoztató</h1>
+    <p class="muted">Utolsó frissítés: 2026. október 31.</p>
+    <p class="intro">Ez a tájékoztató a Kamera timelapse személyes használatú Home Assistant-alkalmazásra vonatkozik. Az alkalmazást a <a href="https://github.com/M3NT1">M3NT1 GitHub-fiók</a> tulajdonosa üzemelteti saját helyi rendszerében, saját kameráihoz és saját Google Drive-fiókjához.</p>
+    <h2>1. Az adatkezelés célja</h2>
+    <p>A napi kameraképek magánarchívumának létrehozása, megőrzése és az ezekből készülő éves timelapse videók előállítása. A Google Drive a felhasználó saját felhős tárolójaként szolgál.</p>
+    <h2>2. Milyen adatokat kezel az alkalmazás?</h2>
+    <ul>
+      <li>A kiválasztott kamerák PNG-képei és az ezekből előállított MP4-videók.</li>
+      <li>A képfájlok dátuma, készítési ideje, felbontása, kameramegjelölése, beállított nézőpontja és ellenőrzőösszege.</li>
+      <li>A kijelölt Google Drive-archívum fájl- és mappanevei, azonosítói, méretei és a feltöltéshez vagy feldolgozáshoz szükséges fájlmetaadatok.</li>
+      <li>A Google által kiadott hozzáférési és frissítőtoken, a felhasználó saját OAuth-kliensének azonosítója és titka.</li>
+      <li>A helyi feltöltési, feldolgozási és hibakeresési napló a megbízható működéshez.</li>
+    </ul>
+    <h2>3. A Google Drive-hozzáférés módja</h2>
+    <p>A kapcsolatot a felhasználó Google OAuth-engedélyezéssel hozza létre. A kért jogosultság a <code>https://www.googleapis.com/auth/drive</code>, amely teljes hozzáférést biztosít a Drive-fájlokhoz. Erre a korábban létrehozott archívummappa eléréséhez is szükség van; az alkalmazás beállítása a tényleges műveleteket a kijelölt archívummappára irányítja.</p>
+    <p>Az alkalmazás itt mappákat és fájlokat hoz létre, képeket és videókat tölt fel, listázza a meglévő anyagokat, és az ellenőrzéshez vagy az éves videó előállításához fájlokat tölt le. A Google-fiók jelszavát az alkalmazás nem kapja meg.</p>
+    <h2>4. Tárolás és megőrzés</h2>
+    <p>A képek először a helyi Home Assistant-rendszerben készülnek el. A sikeresen feltöltött helyi kép- és metaadatpéldányokat az alkalmazás alapértelmezés szerint 14 nap után törli. A még fel nem töltött képeket a sikeres feltöltésig őrzi. Az éves feldolgozás ideiglenes munkafájljait a feldolgozás után eltávolítja.</p>
+    <p>A Google Drive-on az archívum megmarad, amíg a felhasználó nem törli. A feltöltési és feldolgozási nyilvántartás a helyi alkalmazás adattárolójában marad a későbbi helyreállítás és az ismételt feltöltések elkerülése érdekében.</p>
+    <p>Az OAuth-tokenek és a kliensadatok a helyi alkalmazás korlátozott hozzáférésű adattárolójában vannak. Ezeket a kezelőfelület nem jeleníti meg újra, és az alkalmazás nem írja a működési naplóba. A rendszer biztonsági mentéseinek megőrzését a Home Assistant mentési beállításai határozzák meg.</p>
+    <h2>5. Adattovábbítás és felhasználás</h2>
+    <p>A képek és videók a felhasználó saját Google Drive-fiókjába kerülnek. A Google a szolgáltatást a saját feltételei és adatvédelmi szabályzata alapján biztosítja. A timelapse-alkalmazás nem értékesít adatot, nem készít hirdetési profilt, és nem használ Google-felhasználói adatokat általános mesterségesintelligencia-modellek tanítására.</p>
+    <p>Az alkalmazás Google API-kon keresztül kapott adatainak használata és továbbítása a <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a> szabályainak, köztük a Limited Use követelményeinek megfelelően történik. A kameraképek és tokenek nem részei ennek a nyilvános tájékoztató webhelynek.</p>
+    <h2>6. Hozzáférés visszavonása és adatok törlése</h2>
+    <p>A Google-hozzáférés bármikor visszavonható a <a href="https://myaccount.google.com/connections">Google-fiók kapcsolódó alkalmazásai</a> között a saját Kamera timelapse OAuth-alkalmazás kiválasztásával. A helyi automatika a Home Assistantban is kikapcsolható.</p>
+    <p>A Drive-on lévő képek, videók és metaadatok a saját archívummappából törölhetők. A helyi képek és az alkalmazás nyilvántartása a Home Assistant tárhelyéről távolíthatók el. A Google-hozzáférés visszavonása önmagában nem törli a már elkészült archívumot vagy a biztonsági mentéseket.</p>
+    <h2>7. A tájékoztató webhely</h2>
+    <p>Ezek a statikus oldalak nem használnak analitikát, hirdetést, űrlapot vagy saját sütit. A tárhelyet a GitHub Pages biztosítja; a webkérések technikai adatait a GitHub a <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">saját adatvédelmi tájékoztatója</a> szerint kezelheti.</p>
+    <h2>8. Kapcsolat és változtatások</h2>
+    <p>Az alkalmazás üzemeltetője a M3NT1 GitHub-fiók tulajdonosa. Az adatkezelésről a <a href="https://github.com/M3NT1/m3nt1.github.io/issues">projekt GitHub-oldalán</a> lehet érdeklődni. Titkos kliensadatot, hozzáférési tokent vagy magánjellegű kameraképet ne tegyél nyilvános hibajegybe.</p>
+    <p>Az adatkezelési gyakorlat változásakor ez a tájékoztató frissül. Ha a Google-adatok felhasználása érdemben megváltozik, az új felhasználás előtt új felhasználói hozzájárulás szükséges.</p>
+    <p class="back"><a href="./">← Vissza a kezdőlapra</a></p>
+  </main>
+  <footer class="shell"><span>Kamera timelapse · 2026</span><a href="./">Kezdőlap</a><a href="https://github.com/M3NT1/m3nt1.github.io/issues">Kapcsolat</a></footer>
+</body>
+</html>
